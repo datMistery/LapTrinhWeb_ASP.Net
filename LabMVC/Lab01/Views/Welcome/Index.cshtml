@@ -1,0 +1,31 @@
+﻿
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Welcome</title>
+</head>
+<body>
+
+	@{
+		var now = DateTime.Now;
+		var day = now.Day;
+		var mouth = now.Month;
+		var year = now.Year;
+		var hour = now.Hour;
+		var minute = now.Minute;
+		var second = now.Second;
+	}
+
+	<p style="color: blue; font-weight: bold;">
+		Chào mừng bạn đến với ASP.NET <br />
+		Hôm nay là ngày @day tháng @mouth năm @year <br />
+		Bây giờ là @hour giờ @minute phút @second giây
+	</p>
+</body>
+</html>

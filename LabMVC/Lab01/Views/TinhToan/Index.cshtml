@@ -1,0 +1,45 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Tính toán</title>
+	<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div class="container w-50 mt-1 px-1">
+		<form class="border rounded p-2">
+			<h1 class="text-center text-uppercase">Tính toán</h1>
+			<div class="mb-3 row">
+				<label for="quantity" class="col-md-3 col-form-label fw-bold">Số lượng </label>
+				<div class="col-md-9">
+					<input type="number" name="quantity" required class="form-control" id="quantity" value="">
+				</div>
+			</div>
+			<div class="mb-3 row">
+				<label for="unit-price" class="col-md-3 col-form-label fw-bold">Đơn giá</label>
+				<div class="col-md-9">
+					<input type="number" name="unit-price" required class="form-control" id="unit-price" value="">
+				</div>
+			</div>
+			<div class="mb-3 row">
+				<label for="amount" class="col-md-3 col-form-label fw-bold">Kết quả </label>
+				<div class="col-md-9">
+					<input type="number" readonly class="form-control-plaintext" id="amount" value="">
+				</div>
+			</div>
+			<div class="text-center">
+				<button id="cal-btn" type="button" class="btn btn-outline-dark">Tính toán</button>
+			</div>
+		</form>
+	</div>
+
+	<script src="~/Scripts/bootstrap.js"></script>
+	<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+	<script src="~/Scripts/TinhToan/index.js"></script>
+</body>
+</html>
