@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @{ 
+			var now = DateTime.Now;
+            var day = now.Day;
+            var month = now.Month;
+            var year = now.Year;
+        }
+
+        Hôm Nay là ngày @day tháng @month năm @year 
+    </p>
+    <a href="/Login">Đăng nhập</a>
+</body>
+</html>

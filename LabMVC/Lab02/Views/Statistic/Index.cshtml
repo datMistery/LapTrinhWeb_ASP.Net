@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+	<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div class="card d-flex text-center m-auto mt-1" style="width: 30%">
+		<div class="card-body">
+			<h5 class="card-title text-uppercase text-info">Thống kê Website</h5>
+			<div class="row">
+				<p class="card-text text-end col">Online: </p>
+				<p class="card-text col">@ViewBag.NoOnlineUser</p>
+			</div>
+			<div class="row">
+				<p class="card-text text-end col">Tổng lượt truy cập: </p>
+				<p class="card-text col">@ViewBag.TotalAccess</p>
+			</div>
+		</div>
+	</div>
+
+	<script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
