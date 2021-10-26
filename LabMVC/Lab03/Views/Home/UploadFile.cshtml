@@ -1,0 +1,38 @@
+﻿
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Thông tin cá nhân</title>
+	@Styles.Render("~/Content/css")
+</head>
+<body>
+	<form class="container m-auto border w-50 rounded-1" action="/Home/UploadFile" method="post" enctype="multipart/form-data">
+		<h1 class="text-center">Tải file</h1>
+
+		<div class="row mt-1">
+			<label for="file" class="col-3 text-end">Chọn tập tin:</label>
+			<div class="col-9">
+				<input type="file" class="form-control" id="file" name="file" />
+			</div>
+		</div>
+
+		<div class="row justify-content-center my-1">
+			<button type="submit" class="col-3 btn btn-dark">Tải lên</button>
+		</div>
+
+		@if (ViewBag.Message != null)
+		{
+			<div class="alert alert-primary" role="alert">
+				@ViewBag.Message
+			</div>
+		}
+	</form>
+	@Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

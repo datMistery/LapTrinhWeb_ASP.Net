@@ -1,0 +1,158 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>DangKyThanhVien</title>
+	@Styles.Render("~/Content/css")
+</head>
+<body>
+   
+    <form class="border w-50 m-auto needs-validation" novalidate>
+        <header class="text-uppercase fw-bold fs-1 text-center mb-4">Đăng ký thành viên</header>
+        <fieldset class="mx-1">
+            <legend class="border-bottom mb-2">Thông tin đăng nhập</legend>
+
+            <div class="input-group has-validation mb-3">
+                <label for="username"
+                       class="input-group-text">
+                    Tên đăng nhập
+                </label>
+                <input type="text" class="form-control" id="username" name="username" required>
+                <span class="invalid-feedback">
+                    Tên đăng nhập không được rỗng
+                </span>
+            </div>
+
+            <div class="input-group has-validation mb-3">
+                <label for="password"
+                       class="input-group-text">
+                    Mật khẩu
+                </label>
+                <input type="password" class="form-control" id="password" name="password" required>
+                <span class="invalid-feedback">
+                    Mật khẩu không được rỗng
+                </span>
+            </div>
+
+            <div class="input-group has-validation mb-3">
+                <label for="confirmPassword"
+                       class="input-group-text">
+                    Nhập lại mật khẩu
+                </label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                <span class="invalid-feedback">
+                    Mật khẩu nhập lại không khớp
+                </span>
+            </div>
+
+        </fieldset>
+
+        <fieldset class="mx-1">
+            <legend class="border-bottom mb-2">Thông tin cá nhân</legend>
+
+            <div class="input-group has-validation mb-3">
+                <label for="fullname"
+                       class="input-group-text">
+                    Họ và tên
+                </label>
+                <input type="text" class="form-control" id="fullname" name="fullname" required>
+                <span class="invalid-feedback">
+                    Họ và tên không được rỗng
+                </span>
+            </div>
+
+            <div class="input-group has-validation mb-3">
+                <label for="birthOfDate"
+                       class="input-group-text">
+                    Ngày sinh
+                </label>
+                <input type="date" value="today" class="form-control" id="birthOfDate" name="birthOfDate" required>
+                <span class="invalid-feedback">
+                    Ngày sinh không được rỗng
+                </span>
+            </div>
+
+            <div class="input-group has-validation mb-3">
+                <label for="gender"
+                       class="input-group-text">
+                    Giới tính
+                </label>
+                <div class="form-control d-inline-block border-0 ms-1">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" checked required type="radio" name="gender" id="gender1" value="man">
+                        <label class="form-check-label" for="gender1">Nam</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" required name="gender" id="gender2" value="female">
+                        <label class="form-check-label" for="gender2">Nữ</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group has-validation mb-3">
+                <label for="email"
+                       class="input-group-text">
+                    Email
+                </label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <span class="invalid-feedback">
+                    Email không đúng định dạng
+                </span>
+            </div>
+
+            <div class="input-group has-validation mb-3">
+                <label for="income"
+                       class="input-group-text">
+                    Thu nhập
+                </label>
+                <input
+                    min="1000000"
+                    max="50000000"
+                    type="number"
+                    class="form-control"
+                    id="income"
+                    name="income"
+                    required>
+                <span class="invalid-feedback">
+                    Thu nhập từ 1 triệu đến 50 triệu
+                </span>
+            </div>
+
+        </fieldset>
+        <div class="my-1 pt-1 text-center border-top">
+            <button class="btn btn-primary" type="submit">Đăng ký</button>
+        </div>
+    </form>
+
+	@Scripts.Render("~/bundles/bootstrap")
+	<script>
+		const form = document.querySelector('.needs-validation')
+        form.addEventListener('submit', event => {
+
+            const confirmPassword = form.confirmPassword
+            const password = form.password;
+
+            if (confirmPassword == '') {
+                confirmPassword.setCustomValidity('Mật khẩu nhập lại không được rỗng')
+            }
+            else if (confirmPassword.value !== password.value) {
+                confirmPassword.setCustomValidity('Mật khẩu nhập lại không khớp')
+            }
+            else {
+                confirmPassword.setCustomValidity('')
+            }
+
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+	</script>
+</body>
+</html>

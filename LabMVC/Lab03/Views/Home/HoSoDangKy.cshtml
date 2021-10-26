@@ -1,0 +1,91 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model Lab03.Models.Information
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>HoSoDangKy</title>
+	@Styles.Render("~/Content/css")
+</head>
+<body>
+	<h1 class="text-uppercase text-center">Hồ sơ đăng ký</h1>
+	<div class="container border">
+		<div class="row">
+			<h2 class="col text-center border-end border-bottom pb-1">Thông tin cá nhân</h2>
+			<h2 class="col text-center border-bottom pb-1">Hồ sơ khách hàng</h2>
+		</div>
+		<div class="row">
+			<div class="col text-center fw-bold border-end">
+				<form action="/Home/HoSoDangKy" method="post">
+					<div class="row my-1">
+						<label for="fullname" class="col-4 text-end">Họ tên khách hàng:</label>
+						<div class="col-8">
+							<input type="text" required class="form-control" id="fullname" name="fullname" />
+						</div>
+					</div>
+					<div class="row my-1">
+						<label for="email" class="col-4 text-end">Email:</label>
+						<div class="col-8">
+							<input type="email" required class="form-control" id="email" name="email" />
+						</div>
+					</div>
+					<div class="row my-1">
+						<label class="col-4 text-end">Giới tính:</label>
+						<div class="col">
+							<div class="form-check" style="width: fit-content">
+								<input class="form-check-input" value="Nam" type="radio" name="gender" id="male" checked>
+								<label class="form-check-label ms-0" for="">
+									Nam
+								</label>
+							</div>
+							<div class="form-check" style="width: fit-content">
+								<input class="form-check-input" value="Nữ" type="radio" name="gender" id="female">
+								<label class="form-check-label ms-0" for="">
+									Nữ
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row my-1">
+						<label for="address" class="col-4 text-end">Địa chỉ:</label>
+						<div class="col-8">
+							<textarea class="form-control" id="address" name="address"></textarea>
+						</div>
+					</div>
+					<div class="row my-1">
+						<label for="phone" class="col-4 text-end">Điện thoại:</label>
+						<div class="col-8">
+							<input type="text" required class="form-control" id="phone" name="phone" />
+						</div>
+					</div>
+
+					<div class="row justify-content-center my-1">
+						<button type="submit" class="col-3 btn btn-dark">Đăng Ký</button>
+					</div>
+
+				</form>
+			</div>
+			<div class="col">
+
+				@if (Model != null)
+				{
+					<ul class="list-group">
+						<li class="list-group-item">Họ tên khách hàng: @Model.FullName</li>
+						<li class="list-group-item">Giới tính: @Model.Gender</li>
+						<li class="list-group-item">Email: @Model.Email</li>
+						<li class="list-group-item">Địa chỉ: @Model.Address</li>
+						<li class="list-group-item">Số điện thoại: @Model.Phone</li>
+					</ul>
+				}
+			</div>
+		</div>
+	</div>
+	@Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

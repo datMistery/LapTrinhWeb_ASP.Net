@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Lab02
+namespace Lab03
 {
 	public class BundleConfig
 	{
@@ -19,15 +19,12 @@ namespace Lab02
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
 						"~/Scripts/modernizr-*"));
 
-			// Bug: using ScriptBundle return null
 			bundles.Add(new Bundle("~/bundles/bootstrap").Include(
 					  "~/Scripts/bootstrap.js"));
 
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 					  "~/Content/bootstrap.css",
 					  "~/Content/Site.css"));
-
-			BundleTable.EnableOptimizations = true;
 		}
 	}
 }

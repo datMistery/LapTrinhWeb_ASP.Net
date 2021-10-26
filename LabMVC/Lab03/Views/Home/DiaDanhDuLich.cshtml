@@ -1,0 +1,54 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>DiaDanhDuLich</title>
+	@Styles.Render("~/Content/css")
+</head>
+<body>
+	<div class="container m-auto" style="width: fit-content">
+		<h1 class="text-uppercase text-center">Địa danh du lịch</h1>
+
+		<div class="row">
+			<label for="dia-danh-du-lich" class="col">Địa danh du lịch</label>
+			<select id="dia-danh-du-lich" class="form-select col" multiple>
+
+				@foreach (var placeName in ViewData["PlaceNames"] as IEnumerable<string>)
+				{
+					<option>@placeName</option>
+				}
+			</select>
+		</div>
+		<div class="row mt-1">
+			<label for="total" class="col">Tổng số địa danh</label>
+			<span id="total" class="col border">@ViewBag.PlaceNames.Length</span>
+		</div>
+		<div class="row justify-content-end mt-1">
+			<buton id="btn" class="btn btn-primary col-6">Chọn</buton>
+		</div>
+		<div class="row justify-content-end mt-1">
+			<ul id="output" class="col-6">
+
+			</ul>
+		</div>
+	</div>
+	@Scripts.Render("~/bundles/bootstrap")
+	@Scripts.Render("~/bundles/jquery")
+	<script>
+		$("#btn").click(() => {
+			const placeNames = $("#dia-danh-du-lich").val()
+			const output = $("#output")
+
+			output.empty()
+			for (const placeName of placeNames) {
+				output.append(`<li>${placeName}</li>`)
+			}
+		})
+	</script>
+</body>
+</html>

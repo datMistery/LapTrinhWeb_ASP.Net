@@ -1,0 +1,105 @@
+﻿
+@{
+	Layout = null;
+}
+
+@using Lab03.Models;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Thông tin cá nhân</title>
+	@Styles.Render("~/Content/css")
+</head>
+<body>
+	<form class="container m-auto border w-75 rounded-1" action="/Home/DangKy" method="post">
+		<h1 class="text-center">Thông tin cá nhân</h1>
+
+		<div class="row mt-1">
+			<label for="txtTen" class="col-3 text-end">Họ và tên:</label>
+			<div class="col-9">
+				<input type="text" class="form-control" id="txtTen" name="txtTen" />
+			</div>
+		</div>
+
+		<div class="row mt-1">
+			<label for="rdtNam" class="col-3 text-end">Giới tính: </label>
+			<label class="col">
+				<input type="radio" value="Nam" checked id="rdtNam" name="GioiTinh" />
+				Nam
+			</label>
+			<label class="col">
+				<input type="radio" value="Nữ" id="rdtNu" name="GioiTinh" />
+				Nữ
+			</label>
+		</div>
+
+		<div class="row mt-1">
+			<label class="col-3 text-end">Ngoại ngữ: </label>
+			<label class="col">
+				<input type="checkbox" value="Anh Văn" id="chkAnhVan" name="chkAnhVan" />
+				Anh Văn
+			</label>
+			<label class="col">
+				<input type="checkbox" value="Pháp Văn" id="chkPhapVan" name="chkPhapVan" />
+				Pháp Văn
+			</label>
+		</div>
+
+		<div class="row mt-1">
+			<label class="col-3 text-end">Thu nhập: </label>
+			<label class="col">
+				<input type="radio" value="Dưới 1 triệu" checked id="rdtThuNhapA" name="ThuNhap" />
+				Dưới 1 triệu
+			</label>
+			<label class="col">
+				<input type="radio" value="1-3 Triệu" id="rdtThuNhapB" name="ThuNhap" />
+				1-3 Triệu
+			</label>
+			<label class="col">
+				<input type="radio" value="Trên 3 triệu" id="rdtThuNhapC" name="ThuNhap" />
+				Trên 3 triệu
+			</label>
+		</div>
+
+		<div class="row mt-1">
+			<label class="col-3 text-end">Trình độ:</label>
+			<label class="col">
+				<input type="radio" value="Sau đại học" checked id="rdtTrinhDoA" name="TrinhDo" />
+				Sau đại học
+			</label>
+			<label class="col">
+				<input type="radio" value="Đại học" id="rdtTrinhDoB" name="TrinhDo" />
+				Đại học
+			</label>
+			<label class="col">
+				<input type="radio" value="Cao đẳng" id="rdtTrinhDoC" name="TrinhDo" />
+				Cao đẳng
+			</label>
+		</div>
+
+		<div class="row justify-content-center my-1">
+			<button type="submit" class="col-3 btn btn-dark">Đăng Ký</button>
+		</div>
+
+		@{
+			var user = TempData["User"] as User;
+		}
+
+		@if (user != null)
+		{
+			<h1>Thông tin về bạn</h1>
+			<ul>
+				<li>Tên: @user.Name</li>
+				<li>Giới tính: @user.Gender</li>
+				<li>Ngoại ngữ: @user.English @user.French</li>
+				<li>Thu nhập: @user.Income</li>
+				<li>Trình độ: @user.Level</li>
+			</ul>
+		}
+	</form>
+	@Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
