@@ -1,21 +1,29 @@
 ﻿@{
-	Layout = null;
+    Layout = null;
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-	<meta name="viewport" content="width=device-width" />
-	<title>Đăng ký thành viên</title>
-	@Styles.Render("~/Content/css")
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng ký khách hàng</title>
+    @Styles.Render("~/Content/css")
 </head>
 <body>
-   
-    <form class="border w-50 m-auto needs-validation" method="post" novalidate>
+    <form action="/Home/DangKyKhachHang" class="border w-50 m-auto needs-validation" method="post" novalidate>
         <header class="text-uppercase fw-bold fs-1 text-center mb-4">Đăng ký thành viên</header>
+
+
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert alert-success" role="alert">
+                Đăng ký thành công
+            </div>
+        }
+
         <fieldset class="mx-1">
-            <legend class="border-bottom mb-2">Thông tin đăng nhập</legend>
+            <legend class="border-bottom mb-2">Đăng ký khách hàng</legend>
 
             <div class="input-group has-validation mb-3">
                 <label for="username"
@@ -58,7 +66,7 @@
             <div class="input-group has-validation mb-3">
                 <label for="fullname"
                        class="input-group-text">
-                    Họ và tên
+                    Họ và tên khách hàng
                 </label>
                 <input type="text" class="form-control" id="fullname" name="fullname" required>
                 <span class="invalid-feedback">
@@ -71,9 +79,9 @@
                        class="input-group-text">
                     Ngày sinh
                 </label>
-                <input type="date" class="form-control" id="birthOfDate" name="birthOfDate" required>
+                <input type="date" value="today" class="form-control" id="birthOfDate" name="birthOfDate" required>
                 <span class="invalid-feedback">
-                    Ngày sinh không được rỗng
+                    Ngày sinh không hợp lệ
                 </span>
             </div>
 
@@ -110,14 +118,13 @@
                        class="input-group-text">
                     Thu nhập
                 </label>
-                <input
-                    min="1000000"
-                    max="50000000"
-                    type="number"
-                    class="form-control"
-                    id="income"
-                    name="income"
-                    required>
+                <input min="1000000"
+                       max="50000000"
+                       type="number"
+                       class="form-control"
+                       id="income"
+                       name="income"
+                       required>
                 <span class="invalid-feedback">
                     Thu nhập từ 1 triệu đến 50 triệu
                 </span>
@@ -129,22 +136,22 @@
         </div>
     </form>
 
-	@Scripts.Render("~/bundles/bootstrap")
-	<script>
-		const form = document.querySelector('.needs-validation')
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        const form = document.querySelector('.needs-validation')
         form.addEventListener('submit', event => {
 
             const confirmPassword = form.confirmPassword
             const password = form.password
             const error = document.querySelector("form .invalid-confirm-password")
-           
+
             if (confirmPassword.value == '') {
                 error.textContent = 'Mật khẩu nhập lại không được rỗng'
                 confirmPassword.setCustomValidity('Mật khẩu nhập lại không được rỗng')
             }
             else if (confirmPassword.value !== password.value) {
-                error.textContent = 'Mật khẩu nhập lại không khớp'
-                confirmPassword.setCustomValidity('Mật khẩu nhập lại không khớp')
+                error.textContent = 'Mật khẩu nhập lại chưa đúng'
+                confirmPassword.setCustomValidity('Mật khẩu nhập lại chưa đúng')
             }
             else {
                 error.textContent = ''
@@ -154,9 +161,14 @@
             if (!form.checkValidity()) {
                 event.preventDefault()
                 event.stopPropagation()
+                //const alert = document.querySelector('div[role=alert]')
+                //console.log(alert)
+                //alert.classList.remove('d-none')
+            }
+            else {
             }
             form.classList.add('was-validated')
         }, false)
-	</script>
+    </script>
 </body>
 </html>

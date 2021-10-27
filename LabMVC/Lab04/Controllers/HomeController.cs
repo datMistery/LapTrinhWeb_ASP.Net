@@ -18,8 +18,16 @@ namespace Lab04.Controllers
 			return View();
 		}
 
+		[HttpGet]
 		public ActionResult DangKyKhachHang()
 		{
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult DangKyKhachHang(FormCollection collection)
+		{
+			ViewBag.Message = "Đăng ký thành công";
 			return View();
 		}
 
