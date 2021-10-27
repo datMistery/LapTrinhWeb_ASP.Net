@@ -1,0 +1,30 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Trang chủ</title>
+	@Styles.Render("~/Content/css")
+</head>
+<body>
+	<div class="container w-50">
+		<ul class="list-group">
+			<li class="list-group-item">
+				<a href="/TacGia/">Danh sách tác giả</a>
+			</li>
+			<li class="list-group-item">
+				<a href="/NhaXuatBan">Danh sách nhà xuất bản</a>
+			</li>
+			<li class="list-group-item">
+				<a href="/Sach">Danh sách sách</a>
+			</li>
+		</ul>
+	</div>
+	@Scripts.Render("~/bundles/bootstrap")
+
+</body>
+</html>

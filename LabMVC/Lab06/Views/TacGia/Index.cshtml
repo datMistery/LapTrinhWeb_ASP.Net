@@ -1,0 +1,104 @@
+﻿@{
+	Layout = null;
+}
+
+@model IEnumerable<Lab06.Models.Entities.TACGIA>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Trang chủ</title>
+	@Styles.Render("~/Content/css")
+</head>
+<body>
+
+	<form method="get" action="/TacGia">
+		<input type="hidden" id="page" value="@ViewBag.Page" name="page" />
+		<div class="input-group mb-1">
+			<select class="form-select" id="key" name="key">
+				<option selected value="MaTG">Mã</option>
+				<option value="TenTG">Tên</option>
+				<option value="DiaChiTG">Địa chỉ</option>
+				<option value="DienThoaiTG">Điện thoại</option>
+			</select>
+			<select class="form-select" id="type" name="type">
+				<option value="asc" selected>Tăng dần</option>
+				<option value="desc">Giảm dần</option>
+			</select>
+			<button class="btn btn-outline-secondary" type="submit">Sắp xếp</button>
+		</div>
+	</form>
+	
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th scope="col" class="text-center">Mã</th>
+				<th scope="col" class="text-center">Tên</th>
+				<th scope="col" class="text-center">Địa chỉ</th>
+				<th scope="col" class="text-center">Điện thoại</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var tacGia in Model)
+			{
+				<tr>
+					<td>@tacGia.MaTG</td>
+					<td>@tacGia.TenTG</td>
+					<td>@tacGia.DiaChiTG</td>
+					<td>@tacGia.DienThoaiTG</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+	<nav>
+		<ul class="pagination">
+
+			@if (ViewBag.Page > 1)
+			{
+			   var pre = ViewBag.Page - 1;
+  
+				<li class="page-item">
+					<a class="page-link"
+					   href="/TacGia?page=@pre&key=@ViewBag.Key&type=@ViewBag.Type">
+						@pre
+					</a>
+				</li>
+			}
+
+			<li class="page-item active">
+				<a class="page-link" href="#">@ViewBag.Page</a>
+			</li>
+
+			@if (ViewBag.Page < ViewBag.TotalPage)
+			{
+				var next = ViewBag.Page + 1;
+				<li class="page-item">
+					<a class="page-link"
+					   href="/TacGia?page=@next&key=@ViewBag.Key&type=@ViewBag.Type">
+						@next
+					</a>
+				</li>
+			}
+		</ul>
+	</nav>
+
+	@Scripts.Render("~/bundles/bootstrap")
+
+	<script>
+		const urlParams = new URLSearchParams(window.location.search)
+
+		const key = document.getElementById('key')
+		key.value = urlParams.get('key') ?? 'MaTG'
+
+		const type = document.getElementById('type')
+		type.value = urlParams.get('type') ?? 'asc'
+
+
+
+	</script>
+
+</body>
+</html>
