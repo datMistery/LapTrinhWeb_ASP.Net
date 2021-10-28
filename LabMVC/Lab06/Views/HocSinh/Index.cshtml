@@ -1,0 +1,40 @@
+﻿@{
+	Layout = null;
+}
+
+@model IEnumerable<Lab06.Models.ViewModel.HocSinhViewModel>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Danh sách học sinh</title>
+	@Styles.Render("~/Content/css")
+</head>
+<body>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th scope="col" class="text-center">Mã</th>
+				<th scope="col" class="text-center">Họ tên</th>
+				<th scope="col" class="text-center">Địa chỉ</th>
+				<th scope="col" class="text-center">Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(var student in Model)
+			{
+			<tr>
+				<td>@student.Code</td>
+				<td>@student.Fullname</td>
+				<td>@student.Address</td>
+				<td>@student.Email</td>
+			</tr>
+			}
+		</tbody>
+	</table>
+
+	@Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

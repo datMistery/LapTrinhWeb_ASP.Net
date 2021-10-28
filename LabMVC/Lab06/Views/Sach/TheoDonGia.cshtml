@@ -1,0 +1,97 @@
+﻿@{
+	Layout = null;
+}
+
+@model IEnumerable<Lab06.Models.ViewModel.SachViewModel>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Sách theo Nhà xuất bản</title>
+	@Styles.Render("~/Content/css")
+</head>
+<body>
+
+	<form class="m-3" method="get" action="/Sach/TheoDonGia">
+		<input type="hidden" id="page" value="1" name="page" />
+		<div class="input-group mb-1">
+			@{
+				var GiaTu = (ViewBag.GiaTu < 0) ? null : ViewBag.GiaTu;
+				var GiaDen = (ViewBag.GiaDen < 0) ? null : ViewBag.GiaDen;
+			}
+			<label class="input-group-text" for="GiaTu">Từ</label>
+			<input min="1" value="@GiaTu" type="number" class="form-control" id="GiaTu" name="GiaTu" />
+
+			<label class="input-group-text ms-1" for="GiaDen">Đến</label>
+			<input min="1" value="@GiaDen" type="number" class="form-control" id="GiaDen" name="GiaDen" />
+			
+			<button class="btn btn-outline-secondary ms-1" type="submit">Xem</button>
+		</div>
+	</form>
+
+	<table class="table table-striped table-bordered m-1">
+		<thead>
+			<tr>
+				<th scope="col" class="text-center">Mã</th>
+				<th scope="col" class="text-center">Tên</th>
+				<th scope="col" class="text-center">Đơn giá</th>
+				<th scope="col" class="text-center">Mô tả</th>
+				<th scope="col" class="text-center">Tên CD</th>
+				<th scope="col" class="text-center">Tên NXB</th>
+				<th scope="col" class="text-center">Ngày cập nhật</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var sach in Model)
+			{
+			<tr>
+				<td>@sach.MaSach</td>
+				<td>@sach.TenSach</td>
+				<td>@sach.DonGia</td>
+				<td>@sach.MoTa</td>
+				<td>@sach.TenNXB</td>
+				<td>@sach.TenChuDe</td>
+				<td>@sach.NgayCapNhat</td>
+			</tr>
+			}
+		</tbody>
+	</table>
+
+	<nav>
+		<ul class="pagination justify-content-center">
+
+			@if (ViewBag.Page > 1)
+			{
+				var pre = ViewBag.Page - 1;
+
+				<li class="page-item">
+					<a class="page-link"
+					   href="/Sach/TheoDonGia?page=@pre&GiaTu=@ViewBag.GiaTu&GiaDen=@ViewBag.GiaDen">
+						@pre
+					</a>
+				</li>
+			}
+
+			<li class="page-item active">
+				<a class="page-link" href="#">@ViewBag.Page</a>
+			</li>
+
+			@if (ViewBag.Page < ViewBag.TotalPage)
+			{
+				var next = ViewBag.Page + 1;
+				<li class="page-item">
+					<a class="page-link"
+					   href="/Sach/TheoDonGia?page=@next&GiaTu=@ViewBag.GiaTu&GiaDen=@ViewBag.GiaDen">
+						@next
+					</a>
+				</li>
+			}
+		</ul>
+	</nav>
+
+	@Scripts.Render("~/bundles/bootstrap")
+
+</body>
+</html>

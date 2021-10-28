@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Students>
+	<Student>
+		<Code>SV01</Code>
+		<Fullname>Trần Văn Nam</Fullname>
+		<Address>123 Trần Hưng Đạo, Q5</Address>
+		<Email>nam@gmail.com</Email>
+	</Student>
+	<Student>
+		<Code>SV02</Code>
+		<Fullname>Nguyễn Thị Lý</Fullname>
+		<Address>45 Hai Bà Trưng, Q1</Address>
+		<Email>lythi@yahoo.com</Email>
+	</Student>
+	<Student>
+		<Code>SV03</Code>
+		<Fullname>Nguyễn Thị Bình</Fullname>
+		<Address>31 Lý Thường Kiệt, TB</Address>
+		<Email>kiet@gmail.com</Email>
+	</Student>
+</Students>
