@@ -31,7 +31,14 @@ namespace Lab04.Controllers
 			return View();
 		}
 
+		[HttpGet]
 		public ActionResult HoSoDangKy()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult HoSoDangKy(FormCollection collection)
 		{
 			return View();
 		}

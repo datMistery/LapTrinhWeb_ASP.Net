@@ -16,7 +16,7 @@ namespace Lab02
 			routes.MapRoute(
 				name: "Home",
 				url: "{controller}/{action}",
-				defaults: new { controller = "Home" }
+				defaults: new { controller = "Default", action="Index" }
 			);
 		}
 	}
